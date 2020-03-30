@@ -1,0 +1,34 @@
+{
+  "name": "covid-local-back",
+  "version": "1.0.0",
+  "description": "Localvid-19",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcoasjunior/covid-local-back.git"
+  },
+  "keywords": [
+    "covid",
+    "local",
+    "node",
+    "nodejs"
+  ],
+  "author": "Marco Antônio da Silva Júnior",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcoasjunior/covid-local-back/issues"
+  },
+  "homepage": "https://github.com/marcoasjunior/covid-local-back#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
