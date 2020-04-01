@@ -29,25 +29,37 @@ const UserSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
-    
+
     city: {
         type: String,
         require: true,
     },
-    
+
     uf: {
         type: String,
         require: true,
     },
-    
+
     cep: {
         type: Number,
         require: true,
     },
 
+    symptoms: {
+        type: [String],
+    },
+
+    groups: {
+        type: [String],
+    },
+
+    result: {
+        type: Boolean
+    }
+
 }, {
     timestamps: true,
-    versionKey: false 
+    versionKey: false
 })
 
 const User = mongoose.model('User', UserSchema, 'users')
