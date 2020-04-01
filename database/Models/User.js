@@ -1,21 +1,49 @@
-const mongoose = require('../database/connection')
+const mongoose = require('../connection')
 
 
 const UserSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        require: true
-    },
-    username: {
+
+    email: {
         type: String,
         unique: true,
         require: true,
         lowercase: true
     },
+
+    password: {
+        type: String,
+        require: true,
+    },
+
+    address: {
+        type: String,
+        require: true,
+    },
+
+    address2: {
+        type: String,
+        require: true,
+    },
+
+    district: {
+        type: String,
+        require: true,
+    },
     
-    contact: {
-        type: String
-    }
+    city: {
+        type: String,
+        require: true,
+    },
+    
+    uf: {
+        type: String,
+        require: true,
+    },
+    
+    cep: {
+        type: Number,
+        require: true,
+    },
 
 }, {
     timestamps: true,
