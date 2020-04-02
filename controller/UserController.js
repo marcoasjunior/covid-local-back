@@ -147,7 +147,7 @@ module.exports = {
         }
 
         try {
-            res.status(200).json({response, responseN})
+            res.status(200).json([response, responseN])
         } catch (error) {
             res.status(500).json(error)
         }
