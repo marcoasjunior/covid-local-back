@@ -24,7 +24,7 @@ module.exports = {
         await newUser.save()
             .then(result => {
                 console.log(result)
-                res.json('Usuário criado')
+                res.json(result._id)
             })
             .catch(err => {
                 console.log(err)
@@ -56,6 +56,7 @@ module.exports = {
 
         let data = req.body
         let headers = req.headers
+        let nSymptoms = data.symptoms
 
         console.log(data)
         console.log(headers.id)
@@ -65,8 +66,28 @@ module.exports = {
             })
             .exec(function (err, response) {
                 if (err) return res.status(500).send(err);
-                res.status(200).send(response)
+                console.log(response)
             })
+        
+        nSymptoms.length >= 4 ? 
+
+            await User.findByIdAndUpdate(headers.id, {
+                result: true,
+            })
+            .exec(function (err, response) {
+                if (err) return res.status(500).send(err);
+                res.status(200).send('Atualizado sintomas')
+            }) 
+            
+            : 
+            
+            await User.findByIdAndUpdate(headers.id, {
+                result: false,
+            })
+            .exec(function (err, response) {
+                if (err) return res.status(500).send(err);
+                res.status(200).send('Atualizado sintomas')
+            })    
 
     },
 
@@ -100,6 +121,7 @@ module.exports = {
 
         const uf = await User.countDocuments({
             uf: user.uf,
+            result: true
 
         }, (err, count) => {
             console.log('numero de ocrs: ', count)
@@ -108,6 +130,7 @@ module.exports = {
         const city = await User.countDocuments({
             uf: user.uf,
             city: user.city,
+            result: true
 
         }, (err, count) => {
             console.log('numero de ocrs: ', count)
@@ -117,6 +140,7 @@ module.exports = {
             uf: user.uf,
             city: user.city,
             district: user.district,
+            result: true
 
         }, (err, count) => {
             console.log('numero de ocrs: ', count)
@@ -126,7 +150,8 @@ module.exports = {
             uf: user.uf,
             city: user.city,
             district: user.district,
-            address: user.address
+            address: user.address,
+            result: true
 
         }, (err, count) => {
             console.log('numero de ocrs: ', count)

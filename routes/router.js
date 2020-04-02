@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express();
 const UserController = require('../controller/UserController')
+const passport = require('passport')
 
 router.route('/user')
     .get((req, res) => res.send('tudo ok'))
@@ -24,5 +25,12 @@ router.route('/cases/:id')
     .post()
     .put()
     .delete()
+
+
+router.post('/login', passport.authenticate('local', {
+    session: false
+}), function (req, res) {
+    res.send(req.user._id)
+})
 
 module.exports = router
